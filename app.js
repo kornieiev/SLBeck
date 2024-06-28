@@ -7,13 +7,15 @@ require("colors");
 
 const {
   PORT_SL,
+  DB_HOST_SL,
   DB_ADMIN_NAME_SL,
   DB_ADMIN_PASSWORD_SL,
   DB_CLUSTER_NAME_SL,
   DB_COLLECTION_SL,
 } = process.env;
+console.log("🚀 ~ DB_HOST_SL:", DB_HOST_SL);
 
-const DB_HOST_SL = `mongodb+srv://${DB_ADMIN_NAME_SL}:${DB_ADMIN_PASSWORD_SL}@${DB_CLUSTER_NAME_SL}.mongodb.net/${DB_COLLECTION_SL}`;
+// const DB_HOST_SL = `mongodb+srv://${DB_ADMIN_NAME_SL}:${DB_ADMIN_PASSWORD_SL}@${DB_CLUSTER_NAME_SL}.mongodb.net/${DB_COLLECTION_SL}`;
 
 const keysRouter = require("./routes/keysRouter");
 
