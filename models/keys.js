@@ -3,76 +3,76 @@ const { handleMongooseError } = require("../helpers");
 
 const keysSchema = new Schema(
   {
-    year: {
+    Year: {
       type: String,
       required: [true, "Set the YEAR of car release"],
     },
-    maker: {
+    Maker: {
       type: String,
       required: [true, "Set the car MAKER"],
     },
-    model: {
+    Model: {
       type: String,
       required: [true, "Set the car MODEL"],
     },
-    typeOfIgnition: {
+    "Type of Ignition": {
       type: String,
       // enum: ["Keyed Turn Ignition", "Push To Start"],
       required: [true, "Set the TYPE OF IGNITION"],
     },
-    typeOfKey: {
+    "Type of Key": {
       type: String,
       // required: [true, "Set the TYPE OF KEY"],
     },
-    noButtons: {
+    "No Buttons": {
       type: String,
       // required: [true, "Set the NUMBER OF BUTTONS"],
     },
-    priceAllKeyLost: {
+    "Price All Keys Lost": {
       type: String,
       // required: [true, "Set the PRICE ALL KEYS LOST"],
     },
-    priceAddKey: {
+    "Price Add a Key": {
       type: String,
       // required: [true, "Set the PRICE ADD KEY"],
     },
-    priceProgramOnly: {
+    "Price Program Only": {
       type: String,
       // required: [true, "Set the PRICE PROGRAM ONLY"],
     },
-    dealerPrice: {
+    "Dealer Price": {
       type: String,
       // required: [true, "Set the DEALER PRICE"],
     },
-    dealerProgram: {
+    "Dealer Program": {
       type: String,
       // required: [true, "Set the DEALER PROGRAM"],
     },
-    dealerEmergencyBlade: {
+    "Dealer Emergency Blade": {
       type: String,
       // required: [true, "Set the DEALER EMERGENCY BLADE"],
     },
-    dealerPriceTotal: {
+    "Dealer Price Total": {
       type: String,
       // required: [true, "Set the DEALER TOTAL PRICE"],
     },
-    dealerLocation: {
+    "Dealer Location": {
       type: String,
       // required: [true, "Set the DEALER LOCATION"],
     },
-    dealerLocksParts: {
+    "Secure Locks Parts": {
       type: String,
       // required: [true, "Set the DEALER LOCKS PART"],
     },
-    partNum: {
+    "Part #": {
       type: String,
       // required: [true, "Set the PART NUM"],
     },
-    link: {
+    Link: {
       type: String,
       // required: [true, "Set the LINK"],
     },
-    comments: {
+    Comments: {
       type: String,
       // required: [true, "Set the COMMENT"],
     },

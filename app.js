@@ -5,17 +5,10 @@ const mongoose = require("mongoose"); // создает подключение �
 require("dotenv").config(); // ищет в проекте файл .env и читает из него указанные в нем КЛЮЧ=значение
 require("colors");
 
-const {
-  DB_ADMIN_NAME,
-  DB_ADMIN_PASSWORD,
-  DB_CLUSTER_NAME,
-  DB_COLLECTION,
-  PORT,
-} = process.env;
-
-const DB_HOST_NEW = `mongodb+srv://${DB_ADMIN_NAME}:${DB_ADMIN_PASSWORD}@${DB_CLUSTER_NAME}.mongodb.net/${DB_COLLECTION}`; // адрес для подключения к БД
+const { PORT_SL } = process.env;
 
 const keysRouter = require("./routes/keysRouter");
+const { DB_HOST_SL } = require("./config");
 
 const app = express(); // создание веб-сервера
 
@@ -34,13 +27,13 @@ app.use((err, req, res, next) => {
   res.status(status).json({ message });
 });
 
-mongoose //
-  .connect(DB_HOST_NEW)
+mongoose
+  .connect(DB_HOST_SL)
   .then(() => console.log("Database connection successful".bold.italic.yellow))
   .then(() =>
-    app.listen(PORT, () =>
+    app.listen(PORT_SL, () =>
       console.log(
-        `Server is running. Use this API on port: ${PORT}`.bold.italic.yellow
+        `Server is running. Use this API on port: ${PORT_SL}`.bold.italic.yellow
       )
     )
   )
