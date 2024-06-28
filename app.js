@@ -5,10 +5,17 @@ const mongoose = require("mongoose"); // создает подключение �
 require("dotenv").config(); // ищет в проекте файл .env и читает из него указанные в нем КЛЮЧ=значение
 require("colors");
 
-const { PORT_SL } = process.env;
+const {
+  PORT_SL,
+  DB_ADMIN_NAME_SL,
+  DB_ADMIN_PASSWORD_SL,
+  DB_CLUSTER_NAME_SL,
+  DB_COLLECTION_SL,
+} = process.env;
+
+const DB_HOST_SL = `mongodb+srv://${DB_ADMIN_NAME_SL}:${DB_ADMIN_PASSWORD_SL}@${DB_CLUSTER_NAME_SL}.mongodb.net/${DB_COLLECTION_SL}`;
 
 const keysRouter = require("./routes/keysRouter");
-const { DB_HOST_SL } = require("./config");
 
 const app = express(); // создание веб-сервера
 
