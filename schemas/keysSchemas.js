@@ -19,6 +19,11 @@ const createKeySchema = Joi.object({
   "Part #": Joi.string(),
   Link: Joi.string(),
   Comments: Joi.string(),
+  isActive: Joi.bool(),
 });
 
-module.exports = { createKeySchema };
+const updateIsActiveSchema = Joi.object({
+  isActive: Joi.boolean().required(),
+});
+
+module.exports = { createKeySchema, updateIsActiveSchema };

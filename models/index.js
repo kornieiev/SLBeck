@@ -1,3 +1,3 @@
-const Key = require("./keys");
+const Key = require("./key");
 
 module.exports = { Key };

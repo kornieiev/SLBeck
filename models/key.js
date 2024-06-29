@@ -4,12 +4,12 @@ const { handleMongooseError } = require("../helpers");
 const keysSchema = new Schema(
   {
     Year: {
-      type: String,
-      required: [true, "Set the YEAR of car release"],
+      type: String, // тип даних
+      required: [true, "Set the YEAR of car release"], // обов'язковість поля
     },
     Maker: {
-      type: String,
-      required: [true, "Set the car MAKER"],
+      type: String, // тип даних
+      required: [true, "Set the car MAKER"], // обов'язковість поля
     },
     Model: {
       type: String,
@@ -17,64 +17,67 @@ const keysSchema = new Schema(
     },
     "Type of Ignition": {
       type: String,
-      // enum: ["Keyed Turn Ignition", "Push To Start"],
       required: [true, "Set the TYPE OF IGNITION"],
     },
     "Type of Key": {
       type: String,
-      // required: [true, "Set the TYPE OF KEY"],
+      // required: [true, "Set TYPE OF KEY"],
     },
     "No Buttons": {
       type: String,
-      // required: [true, "Set the NUMBER OF BUTTONS"],
+      // required: [true, "Set NUMBER OF BUTTONS"],
     },
     "Price All Keys Lost": {
       type: String,
-      // required: [true, "Set the PRICE ALL KEYS LOST"],
+      // required: [true, "Set PRICE ALL KEYS LOST"],
     },
     "Price Add a Key": {
       type: String,
-      // required: [true, "Set the PRICE ADD KEY"],
+      // required: [true, "Set PRICE ADD KEY"],
     },
     "Price Program Only": {
       type: String,
-      // required: [true, "Set the PRICE PROGRAM ONLY"],
+      // required: [true, "Set PRICE PROGRAM ONLY"],
     },
     "Dealer Price": {
       type: String,
-      // required: [true, "Set the DEALER PRICE"],
+      // required: [true, "Set DEALER PRICE"],
     },
     "Dealer Program": {
       type: String,
-      // required: [true, "Set the DEALER PROGRAM"],
+      // required: [true, "Set DEALER PROGRAM"],
     },
     "Dealer Emergency Blade": {
       type: String,
-      // required: [true, "Set the DEALER EMERGENCY BLADE"],
+      // required: [true, "Set DEALER EMERGENCY BLADE"],
     },
     "Dealer Price Total": {
       type: String,
-      // required: [true, "Set the DEALER TOTAL PRICE"],
+      // required: [true, "Set DEALER TOTAL PRICE"],
     },
     "Dealer Location": {
       type: String,
-      // required: [true, "Set the DEALER LOCATION"],
+      // required: [true, "Set DEALER LOCATION"],
     },
     "Secure Locks Parts": {
       type: String,
-      // required: [true, "Set the DEALER LOCKS PART"],
+      // required: [true, "Set DEALER LOCKS PART"],
     },
     "Part #": {
       type: String,
-      // required: [true, "Set the PART NUM"],
+      // required: [true, "Set PART NUM"],
     },
     Link: {
       type: String,
-      // required: [true, "Set the LINK"],
+      // required: [true, "Set LINK"],
     },
     Comments: {
       type: String,
-      // required: [true, "Set the COMMENT"],
+      // required: [true, "Set COMMENT"],
+    },
+    isActive: {
+      type: Boolean,
+      // required: [true, "Set isActive"],
     },
   },
   {
@@ -83,6 +86,8 @@ const keysSchema = new Schema(
   }
 );
 
+// для відловлення помилки, якщо передано не вірний запис у модель
+// https://youtu.be/ptECPvMUfkk?t=2513
 keysSchema.post("save", handleMongooseError);
 
 const Key = model("key", keysSchema);
