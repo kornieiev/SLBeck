@@ -1,3 +1,7 @@
 const Key = require("./key");
+const User = require("./user");
 
-module.exports = { Key };
+module.exports = {
+  Key,
+  User,
+};

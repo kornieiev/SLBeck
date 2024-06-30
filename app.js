@@ -15,6 +15,7 @@ const {
 } = process.env;
 
 const keysRouter = require("./routes/keysRouter");
+const authRouter = require("./routes/authRouter");
 
 const app = express(); // создание веб-сервера
 
@@ -23,6 +24,8 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/keys", keysRouter);
+
+app.use("/api/auth", authRouter);
 
 app.use((_, res) => {
   res.status(404).json({ message: "Route not found" });

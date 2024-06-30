@@ -1,16 +1,17 @@
 const express = require("express");
-const { getAllKeys, createKey } = require("../controllers/keys");
+const {
+  getAllKeys,
+  createKey,
+  getOneById,
+  updateById,
+  updateIsActiveById,
+  deleteOneById,
+} = require("../controllers/keys");
 const {
   createKeySchema,
   updateIsActiveSchema,
 } = require("../schemas/keysSchemas");
 const { validateBody, isValidId } = require("../middlewares");
-const getOneById = require("../controllers/keys/getOneById");
-const updateById = require("../controllers/keys/updateById");
-const updateIsActiveById = require("../controllers/keys/updateIsActiveById");
-const deleteOneById = require("../controllers/keys/deleteOneById");
-
-//
 
 const keysRouter = express.Router();
 
