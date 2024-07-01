@@ -79,6 +79,11 @@ const keysSchema = new Schema(
       type: Boolean,
       // required: [true, "Set isActive"],
     },
+    owner: {
+      type: Schema.Types.ObjectId, // вказуємо зберігати id
+      ref: "user", // ім'я колекції, з якої беремо дані
+      required: true,
+    },
   },
   {
     versionKey: false,

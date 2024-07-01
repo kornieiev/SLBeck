@@ -11,25 +11,32 @@ const {
   createKeySchema,
   updateIsActiveSchema,
 } = require("../schemas/keysSchemas");
-const { validateBody, isValidId } = require("../middlewares");
+const { validateBody, isValidId, authenticate } = require("../middlewares");
 
 const keysRouter = express.Router();
 
-keysRouter.get("/", getAllKeys);
+keysRouter.get("/", authenticate, getAllKeys);
 
-keysRouter.get("/:id", isValidId, getOneById);
+keysRouter.get("/:id", authenticate, isValidId, getOneById);
 
-keysRouter.post("/", validateBody(createKeySchema), createKey);
+keysRouter.post("/", authenticate, validateBody(createKeySchema), createKey);
 
-keysRouter.put("/:id", isValidId, validateBody(createKeySchema), updateById);
+keysRouter.put(
+  "/:id",
+  authenticate,
+  isValidId,
+  validateBody(createKeySchema),
+  updateById
+);
 
 keysRouter.patch(
   "/:id",
+  authenticate,
   isValidId,
   validateBody(updateIsActiveSchema),
   updateIsActiveById
 );
 
-keysRouter.delete("/:id", isValidId, deleteOneById);
+keysRouter.delete("/:id", authenticate, isValidId, deleteOneById);
 
 module.exports = keysRouter;
