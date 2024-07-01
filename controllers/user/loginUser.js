@@ -1,27 +1,38 @@
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+
+const { JWT_SECRET_SL } = process.env;
 
 const { User } = require("../../models");
 const { HttpError } = require("../../helpers");
 
-// Функция для сравнения пароля
-async function comparePassword(plainPassword, hashedPassword) {
-  const isMatch = await bcrypt.compare(plainPassword, hashedPassword);
-  return isMatch;
-}
-
 const loginUser = async (req, res, next) => {
   const { email, password } = req.body;
-
-  const hashedPassword = await bcrypt.hash(password, 10);
-
   const user = await User.findOne({ email });
-
-  if (!comparePassword(password, user.password)) {
-    console.log("Password uncorrect!");
-    throw HttpError(401);
+  if (!user) {
+    throw HttpError(401, "Email, or Password invalid!");
   }
 
-  res.status(202).json({ ...user });
+  const passwordCompare = await bcrypt.compare(password, user.password);
+  if (!passwordCompare) {
+    throw HttpError(401, "Email, or Password invalid!");
+  }
+
+  const payload = { id: user._id };
+  // console.log("🚀 ~ loginUser ~ payload:", payload);
+
+  const token = jwt.sign(payload, JWT_SECRET_SL, { expiresIn: "23h" });
+
+  const decodeToken = jwt.decode(token);
+  // console.log("🚀 ~ loginUser ~ decodeToken:", decodeToken);
+
+  // await User.findByIdAndUpdate({
+  //   token,
+  // });
+
+  res.status(202).json({
+    token,
+  });
 };
 
 module.exports = loginUser;
