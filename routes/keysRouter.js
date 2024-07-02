@@ -15,7 +15,11 @@ const { validateBody, isValidId, authenticate } = require("../middlewares");
 
 const keysRouter = express.Router();
 
-keysRouter.get("/", authenticate, getAllKeys);
+keysRouter.get(
+  "/",
+  // authenticate,
+  getAllKeys
+);
 
 keysRouter.get("/:id", authenticate, isValidId, getOneById);
 
