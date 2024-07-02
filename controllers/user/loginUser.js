@@ -19,13 +19,10 @@ const loginUser = async (req, res, next) => {
   }
 
   const payload = { id: user._id };
-  // console.log("🚀 ~ loginUser ~ payload:", payload);
 
   const token = jwt.sign(payload, JWT_SECRET_SL, { expiresIn: "23h" });
 
-  const decodeToken = jwt.decode(token);
-  // console.log("🚀 ~ loginUser ~ decodeToken:", decodeToken);
-
+  await User.findByIdAndUpdate(user._id, { token }, { new: true });
   // await User.findByIdAndUpdate({
   //   token,
   // });

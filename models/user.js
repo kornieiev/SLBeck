@@ -20,6 +20,10 @@ const userSchema = new Schema(
       minlength: 6,
       required: [true, "Password is required"],
     },
+    token: {
+      type: String,
+      required: false,
+    },
   },
   {
     versionKey: false,
