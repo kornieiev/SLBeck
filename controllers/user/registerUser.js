@@ -17,6 +17,7 @@ const registerUser = async (req, res, next) => {
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const newUser = await User.create({ ...req.body, password: hashedPassword });
+  console.log("🚀 ~ registerUser ~ newUser:", newUser);
 
   const registeredUser = await User.findOne({ email });
   console.log("🚀 ~ registerUser ~ registeredUser:", registeredUser);
