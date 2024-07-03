@@ -7,7 +7,7 @@ const { User } = require("../../models");
 const { HttpError } = require("../../helpers");
 
 const loginUser = async (req, res, next) => {
-  const { email, password } = req.body;
+  const { name, email, password } = req.body;
   const user = await User.findOne({ email });
   if (!user) {
     throw HttpError(401, "Email, or Password invalid!");
@@ -29,6 +29,7 @@ const loginUser = async (req, res, next) => {
 
   res.status(202).json({
     token,
+    user: { name, email },
   });
 };
 
