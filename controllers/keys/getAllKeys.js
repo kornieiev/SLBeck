@@ -6,6 +6,12 @@ const getAllKeys = async (req, res, next) => {
 
   const skip = (page - 1) * limit;
 
+  if (req.user.role === "admin") {
+    console.log("it is ADMIN");
+  } else {
+    console.log("req.user.role", req.user.role);
+  }
+
   const result = await Key.find({ owner }, "-createdAt -updatedAt", {
     skip,
     limit,
