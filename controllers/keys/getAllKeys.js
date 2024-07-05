@@ -2,7 +2,7 @@ const { Key } = require("../../models");
 
 const getAllKeys = async (req, res, next) => {
   const { _id: owner } = req.user;
-  const { page = 1, limit = 10 } = req.query; // важливо вказати значення за замовчуванням
+  const { page = 1, limit = "" } = req.query; // важливо вказати значення за замовчуванням
 
   const skip = (page - 1) * limit;
 
