@@ -6,6 +6,7 @@ const {
   updateById,
   updateIsActiveById,
   deleteOneById,
+  getKeysByMaker,
 } = require("../controllers/keys");
 const {
   createKeySchema,
@@ -15,12 +16,19 @@ const { validateBody, isValidId, authenticate } = require("../middlewares");
 
 const keysRouter = express.Router();
 
+// getAllKeys
 keysRouter.get("/", authenticate, getAllKeys);
 
+// getKeysByMaker
+keysRouter.get("/getKeysByMaker", authenticate, getKeysByMaker);
+
+// getOneById
 keysRouter.get("/:id", authenticate, isValidId, getOneById);
 
+// createKey
 keysRouter.post("/", authenticate, validateBody(createKeySchema), createKey);
 
+// updateById
 keysRouter.put(
   "/:id",
   authenticate,
@@ -29,6 +37,7 @@ keysRouter.put(
   updateById
 );
 
+// updateIsActiveById
 keysRouter.patch(
   "/:id",
   authenticate,
@@ -37,6 +46,7 @@ keysRouter.patch(
   updateIsActiveById
 );
 
+// deleteOneById
 keysRouter.delete("/:id", authenticate, isValidId, deleteOneById);
 
 module.exports = keysRouter;

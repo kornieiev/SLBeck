@@ -7,6 +7,7 @@ const updateById = require("./updateById");
 const updateIsActiveById = require("./updateIsActiveById");
 const updateKey = require("./updateKey");
 const deleteOneById = require("./deleteOneById");
+const getKeysByMaker = require("./getKeysByMaker");
 
 module.exports = {
   getAllKeys: controllerWrapper(getAllKeys),
@@ -16,4 +17,5 @@ module.exports = {
   updateIsActiveById: controllerWrapper(updateIsActiveById),
   updateKey: controllerWrapper(updateKey),
   deleteOneById: controllerWrapper(deleteOneById),
+  getKeysByMaker: controllerWrapper(getKeysByMaker),
 };
