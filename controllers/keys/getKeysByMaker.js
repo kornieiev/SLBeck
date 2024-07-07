@@ -2,8 +2,11 @@ const { Key } = require("../../models");
 
 const getKeysByMaker = async (req, res, next) => {
   const { _id: owner } = req.user;
-  const { maker } = req.body;
-  console.log("🚀 ~ getKeysByMaker ~ req.body:", req.body);
+  const { maker } = req.params;
+  // const { email, password } = req.body;
+
+  console.log("🚀 ~ getKeysByMaker ~ req:", req);
+  console.log("🚀 ~ getKeysByMaker ~ req.params:", req.params);
   console.log("🚀 ~ getKeysByMaker ~ maker:", maker);
 
   const { page = 1, limit = "" } = req.query; // важливо вказати значення за замовчуванням
