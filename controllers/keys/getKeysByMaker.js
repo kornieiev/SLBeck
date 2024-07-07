@@ -10,7 +10,7 @@ const getKeysByMaker = async (req, res, next) => {
   const skip = (page - 1) * limit;
 
   if (req.user.role === "admin") {
-    const result = await Key.find({ Maker: maker }, "-createdAt -updatedAt", {
+    const result = await Key.find({ "Maker": maker }, "-createdAt -updatedAt", {
       skip,
       limit,
     }).populate("owner", "name email"); // назва поля, яке потрібно поширити. Візьми поле "owner" знайди з якої колекції воно і пошир дані в цієї колекції замість поля "owner"
