@@ -2,7 +2,7 @@ const { Key } = require("../../models");
 
 const getKeysByMaker = async (req, res, next) => {
   const { _id: owner } = req.user;
-  const { maker } = req.body;
+  const { 'getKeysByMaker - maker:', maker } = req.body;
   console.log("🚀 ~ getKeysByMaker ~ maker:", maker);
 
   const { page = 1, limit = "" } = req.query; // важливо вказати значення за замовчуванням
