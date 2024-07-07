@@ -1,31 +1,19 @@
 const { Key } = require("../../models");
 
 const getKeysByMaker = async (req, res, next) => {
-  const { _id: owner } = req.user;
+  // const { _id: owner } = req.user;
   const { maker } = req.params;
-  // const { maker } = req.body;
-
-  // const { email, password } = req.body;
-
-  // console.log("🚀 ~ getKeysByMaker ~ req:", req);
-  console.log("🚀 ~ getKeysByMaker ~ req.params:", req.params);
-  console.log("🚀 ~ getKeysByMaker ~ req.body:", req.body);
-
-  // console.log("🚀 ~ getKeysByMaker ~ maker:", maker);
+  console.log("🚀 ~ getKeysByMaker ~ maker:", maker);
 
   const { page = 1, limit = "" } = req.query; // важливо вказати значення за замовчуванням
 
   const skip = (page - 1) * limit;
 
   if (req.user.role === "admin") {
-    const result = await Key.find(
-      { Maker: `${maker}` },
-      "-createdAt -updatedAt",
-      {
-        skip,
-        limit,
-      }
-    ).populate("owner", "name email"); // назва поля, яке потрібно поширити. Візьми поле "owner" знайди з якої колекції воно і пошир дані в цієї колекції замість поля "owner"
+    const result = await Key.find({ Maker: maker }, "-createdAt -updatedAt", {
+      skip,
+      limit,
+    }).populate("owner", "name email"); // назва поля, яке потрібно поширити. Візьми поле "owner" знайди з якої колекції воно і пошир дані в цієї колекції замість поля "owner"
     // другим аргументом вказується список полей, які потрібно повернути
     res.status(200).json(result);
     return;

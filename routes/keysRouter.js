@@ -20,7 +20,7 @@ const keysRouter = express.Router();
 keysRouter.get("/", authenticate, getAllKeys);
 
 // getKeysByMaker
-keysRouter.get("/getKeysByMaker", authenticate, getKeysByMaker);
+keysRouter.get("/:maker", authenticate, getKeysByMaker);
 
 // getOneById
 keysRouter.get("/:id", authenticate, isValidId, getOneById);
