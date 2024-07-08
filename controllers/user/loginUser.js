@@ -8,7 +8,6 @@ const { HttpError } = require("../../helpers");
 
 const loginUser = async (req, res, next) => {
   const { email, password } = req.body;
-  console.log("🚀 ~ loginUser ~ req.body:", req.body);
   // const { name } = req.user;
 
   const user = await User.findOne({ email });
