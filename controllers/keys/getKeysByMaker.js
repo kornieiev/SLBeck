@@ -5,6 +5,8 @@ const getKeysByMaker = async (req, res, next) => {
   const { maker } = req.params;
   console.log("🚀 ~ getKeysByMaker ~ maker:", maker);
   const [makerr, model] = maker.split("-");
+  console.log("🚀 ~ getKeysByMaker ~ model:", model);
+  console.log("🚀 ~ getKeysByMaker ~ makerr:", makerr);
 
   const { page = 1, limit = "" } = req.query; // важливо вказати значення за замовчуванням
 
