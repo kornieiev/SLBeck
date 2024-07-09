@@ -4,7 +4,7 @@ const getKeysByMaker = async (req, res, next) => {
   const { _id: owner } = req.user;
   const { maker } = req.params;
   console.log("🚀 ~ getKeysByMaker ~ maker:", maker);
-  const [makerr, model] = maker.split("-");
+  const [makerr, model] = maker.split("+");
   console.log("🚀 ~ getKeysByMaker ~ model:", model);
   console.log("🚀 ~ getKeysByMaker ~ makerr:", makerr);
 
