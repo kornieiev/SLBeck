@@ -5,17 +5,19 @@ const { Key } = require("../../models");
 
 const updateIsActiveById = async (req, res, next) => {
   const { id } = req.params;
-  console.log("req.params ~ id:", id);
-
+  console.log("🚀 ~ updateIsActiveById ~ id:", id);
   const data = req.body;
   console.log("req.body ~ data:", data);
 
-  // Преобразуем строку в ObjectId
+  // // Преобразуем строку в ObjectId
   const objectId = new ObjectId(id);
+  console.log("objectId:", objectId);
 
-  const result = await Key.findByIdAndUpdate(objectId, data, {
+  const result = await Key.findByIdAndUpdate({ _id: objectId }, data, {
     new: true,
   });
+  console.log("🚀result:", result);
+
   if (!result) {
     throw HttpError(404);
   }
