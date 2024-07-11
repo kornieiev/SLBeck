@@ -84,6 +84,9 @@ const keysSchema = new Schema(
       ref: "user", // ім'я колекції, з якої беремо дані
       required: true,
     },
+    _id: {
+      type: String,
+    },
   },
   {
     versionKey: false,

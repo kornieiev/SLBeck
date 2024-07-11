@@ -42,7 +42,7 @@ keysRouter.patch(
   "/:id",
   authenticate,
   isValidId,
-  validateBody(updateIsActiveSchema),
+  // validateBody(updateIsActiveSchema),
   updateIsActiveById
 );
 

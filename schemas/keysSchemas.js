@@ -20,6 +20,9 @@ const createKeySchema = Joi.object({
   Link: Joi.string(),
   Comments: Joi.string(),
   isActive: Joi.bool(),
+  _id: Joi.string(),
+  YearStart: Joi.number(),
+  YearEnd: Joi.number(),
 });
 
 const updateIsActiveSchema = Joi.object({
