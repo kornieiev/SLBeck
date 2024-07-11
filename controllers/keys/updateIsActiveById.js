@@ -13,9 +13,9 @@ const updateIsActiveById = async (req, res, next) => {
   // Преобразуем строку в ObjectId
   const objectId = new ObjectId(id);
 
-  console.log("objectId:", objectId);
-
-  const result = await Key.findByIdAndUpdate(objectId, req.body, { new: true });
+  const result = await Key.findByIdAndUpdate(objectId, data, {
+    new: true,
+  });
   if (!result) {
     throw HttpError(404);
   }
