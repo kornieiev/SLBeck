@@ -8,6 +8,8 @@ const updateById = async (req, res, next) => {
   console.log("req.body ~ data:", data);
 
   const result = await Key.findByIdAndUpdate(id, req.body, { new: true });
+  console.log("result:", result);
+
   if (!result) {
     ``;
     throw HttpError(404);

@@ -23,7 +23,7 @@ const createKeySchema = Joi.object({
 });
 
 const updateIsActiveSchema = Joi.object({
-  isActive: Joi.boolean().required(),
+  isActive: Joi.boolean(),
 });
 
 module.exports = { createKeySchema, updateIsActiveSchema };
