@@ -1,3 +1,5 @@
+const { ObjectId } = require("mongodb");
+
 const { HttpError } = require("../../helpers");
 const { Key } = require("../../models");
 
@@ -8,7 +10,12 @@ const updateIsActiveById = async (req, res, next) => {
   const data = req.body;
   console.log("req.body ~ data:", data);
 
-  const result = await Key.findByIdAndUpdate(id, req.body, { new: true });
+  // Преобразуем строку в ObjectId
+  const objectId = new ObjectId(id);
+
+  console.log("objectId:", objectId);
+
+  const result = await Key.findByIdAndUpdate(objectId, req.body, { new: true });
   if (!result) {
     throw HttpError(404);
   }
