@@ -6,7 +6,7 @@ const createKeySchema = Joi.object({
   Model: Joi.string().required(),
   "Type of Ignition": Joi.string().required(),
   "Type of Key": Joi.string(),
-  "No Buttons": Joi.string(),
+  "No Buttons": Joi.number(),
   "Price All Keys Lost": Joi.string(),
   "Price Add a Key": Joi.string(),
   "Price Program Only": Joi.string(),
