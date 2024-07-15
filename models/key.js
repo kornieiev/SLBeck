@@ -3,10 +3,6 @@ const { handleMongooseError } = require("../helpers");
 
 const keysSchema = new Schema(
   {
-    Year: {
-      type: String, // тип даних
-      required: [true, "Set the YEAR of car release"], // обов'язковість поля
-    },
     Maker: {
       type: String, // тип даних
       required: [true, "Set the car MAKER"], // обов'язковість поля
@@ -14,6 +10,10 @@ const keysSchema = new Schema(
     Model: {
       type: String,
       required: [true, "Set the car MODEL"],
+    },
+    Year: {
+      type: String, // тип даних
+      required: [true, "Set the YEAR of car release"], // обов'язковість поля
     },
     "Type of Ignition": {
       type: String,
@@ -24,7 +24,9 @@ const keysSchema = new Schema(
       // required: [true, "Set TYPE OF KEY"],
     },
     "No Buttons": {
-      type: String,
+      type: Number,
+      min: [1, "No Buttons must be at least 1"],
+      max: [10, "No Buttons must be at most 10"],
       // required: [true, "Set NUMBER OF BUTTONS"],
     },
     "Price All Keys Lost": {
