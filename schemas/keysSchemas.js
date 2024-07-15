@@ -1,9 +1,9 @@
 const Joi = require("joi");
 
 const createKeySchema = Joi.object({
-  Year: Joi.string().required(),
   Maker: Joi.string().required(),
   Model: Joi.string().required(),
+  Year: Joi.string().required(),
   "Type of Ignition": Joi.string().required(),
   "Type of Key": Joi.string(),
   "No Buttons": Joi.number(),
