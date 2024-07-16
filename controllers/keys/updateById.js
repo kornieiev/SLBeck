@@ -10,8 +10,8 @@ const updateById = async (req, res, next) => {
   console.log("updateById-req.body ~ data:", data);
 
   // // Преобразуем строку в ObjectId
-  // const objectId = new ObjectId(id);
-  // console.log("objectId:", objectId);
+  const objectId = new ObjectId(id);
+  console.log("objectId:", objectId);
 
   const result = await Key.findByIdAndUpdate(objectId, data, { new: true });
   console.log("result:", result);
