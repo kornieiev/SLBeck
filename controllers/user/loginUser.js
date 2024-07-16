@@ -11,7 +11,7 @@ const loginUser = async (req, res, next) => {
   // const { name } = req.user;
 
   const user = await User.findOne({ email });
-  console.log("🚀 ~ loginUser ~ user:", user);
+  // console.log("🚀 ~ loginUser ~ user:", user);
   if (!user) {
     throw HttpError(401, "Email, or Password invalid!");
   }
