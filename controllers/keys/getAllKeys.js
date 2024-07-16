@@ -6,23 +6,23 @@ const getAllKeys = async (req, res, next) => {
 
   const skip = (page - 1) * limit;
 
-  if (req.user.role === "admin") {
-    console.log("it is ADMIN");
-    const result = await Key.find({}, "-createdAt -updatedAt", {
-      skip,
-      limit,
-    }).populate("owner", "name email"); // назва поля, яке потрібно поширити. Візьми поле "owner" знайди з якої колекції воно і пошир дані в цієї колекції замість поля "owner"
-    // другим аргументом вказується список полей, які потрібно повернути
-    res.status(200).json(result);
-    return;
-  } else {
-    const result = await Key.find({ owner }, "-createdAt -updatedAt", {
-      skip,
-      limit,
-    }).populate("owner", "name email"); // назва поля, яке потрібно поширити. Візьми поле "owner" знайди з якої колекції воно і пошир дані в цієї колекції замість поля "owner"
-    // другим аргументом вказується список полей, які потрібно повернути
-    res.status(200).json(result);
-  }
+  // if (req.user.role === "admin") {
+  //   console.log("it is ADMIN");
+  const result = await Key.find({}, "-createdAt -updatedAt", {
+    skip,
+    limit,
+  }).populate("owner", "name email"); // назва поля, яке потрібно поширити. Візьми поле "owner" знайди з якої колекції воно і пошир дані в цієї колекції замість поля "owner"
+  // другим аргументом вказується список полей, які потрібно повернути
+  res.status(200).json(result);
+  return;
+  // } else {
+  //   const result = await Key.find({ owner }, "-createdAt -updatedAt", {
+  //     skip,
+  //     limit,
+  //   }).populate("owner", "name email"); // назва поля, яке потрібно поширити. Візьми поле "owner" знайди з якої колекції воно і пошир дані в цієї колекції замість поля "owner"
+  //   // другим аргументом вказується список полей, які потрібно повернути
+  //   res.status(200).json(result);
+  // }
 };
 
 module.exports = getAllKeys;

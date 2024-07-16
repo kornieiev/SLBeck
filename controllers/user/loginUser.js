@@ -11,6 +11,7 @@ const loginUser = async (req, res, next) => {
   // const { name } = req.user;
 
   const user = await User.findOne({ email });
+  console.log("🚀 ~ loginUser ~ user:", user);
   if (!user) {
     throw HttpError(401, "Email, or Password invalid!");
   }
@@ -31,7 +32,7 @@ const loginUser = async (req, res, next) => {
 
   res.status(202).json({
     token,
-    user: { name: user.name, email },
+    user: { name: user.name, email, user: user.role },
   });
 };
 
