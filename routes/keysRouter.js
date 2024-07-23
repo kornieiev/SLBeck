@@ -7,6 +7,7 @@ const {
   updateIsActiveById,
   deleteOneById,
   getKeysByMaker,
+  updateDealerPriceByKeyId,
 } = require("../controllers/keys");
 const {
   createKeySchema,
@@ -35,6 +36,15 @@ keysRouter.put(
   isValidId,
   validateBody(createKeySchema),
   updateById
+);
+
+// updateDealerPriceByKeyId
+keysRouter.put(
+  "/dealer/:id",
+  authenticate,
+  isValidId,
+  // validateBody(createKeySchema),
+  updateDealerPriceByKeyId
 );
 
 // updateIsActiveById
