@@ -5,11 +5,8 @@ const { Key } = require("../../models");
 
 const updateDealerPriceByKeyId = async (req, res, next) => {
   const { id } = req.params;
-  console.log("updateDealerPriceByKeyId ~ id:", id);
   const data = req.body;
-  console.log("updateDealerPriceByKeyId ~ data:", data);
   const dealerName = Object.keys(data.DealersPrice)[0];
-  console.log("updateDealerPriceByKeyId ~ dealerName:", data);
 
   const result = await Key.findOneAndUpdate(
     { _id: id },

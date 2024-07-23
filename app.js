@@ -16,6 +16,7 @@ const {
 
 const keysRouter = require("./routes/keysRouter");
 const authRouter = require("./routes/authRouter");
+const dealersRouter = require("./routes/dealersRouter");
 
 const app = express(); // создание веб-сервера
 
@@ -26,6 +27,8 @@ app.use(express.json());
 app.use("/api/auth", authRouter);
 
 app.use("/api/keys", keysRouter);
+
+app.use("/api/dealers", dealersRouter);
 
 app.use((_, res) => {
   res.status(404).json({ message: "Route not found" });
