@@ -6,7 +6,7 @@ const createDealer = async (req, res, next) => {
 
   const result = await Dealer.create({ ...req.body, owner });
 
-  res.status(201).json({ result }, "-createdAt -updatedAt");
+  res.status(201).json({ result });
 };
 
 module.exports = createDealer;
