@@ -4,6 +4,8 @@ const cors = require("cors"); // позволяет браузеру разре�
 const mongoose = require("mongoose"); // создает подключение к базе данных MongoDB
 require("dotenv").config(); // ищет в проекте файл .env и читает из него указанные в нем КЛЮЧ=значение
 require("colors");
+const fs = require("fs");
+const path = require("path");
 
 const {
   PORT_SL,
@@ -20,7 +22,13 @@ const dealersRouter = require("./routes/dealersRouter");
 
 const app = express(); // создание веб-сервера
 
-app.use(morgan("tiny")); // 'combined', 'common', 'short', 'tiny', 'dev'
+const accessLogStream = fs.createWriteStream(
+  path.join(__dirname, "access.log"),
+  { flags: "a" }
+);
+
+// app.use(morgan("tiny")); // 'combined', 'common', 'short', 'tiny', 'dev'
+app.use(morgan("combined", { stream: accessLogStream }));
 app.use(cors());
 app.use(express.json());
 
