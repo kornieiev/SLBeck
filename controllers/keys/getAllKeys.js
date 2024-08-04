@@ -1,10 +1,18 @@
-const { Key } = require("../../models");
+const { Key, Request } = require("../../models");
 
 const getAllKeys = async (req, res, next) => {
-  const { _id: owner } = req.user;
+  // const { _id: owner } = req.user;
   const { page = 1, limit = "" } = req.query; // важливо вказати значення за замовчуванням
 
+  const request = {
+    userId: req.user._id,
+    userName: req.user.name,
+    requestTime: new Date(),
+  };
+
   const skip = (page - 1) * limit;
+
+  await Request.create({ ...request });
 
   // if (req.user.role === "admin") {
   const result = await Key.find({}, "-createdAt -updatedAt", {
