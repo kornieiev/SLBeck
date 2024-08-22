@@ -35,3 +35,5 @@
 ::1 - - [04/Aug/2024:13:38:00 +0000] "GET /api/keys? HTTP/1.1" 200 1194072 "-" "PostmanRuntime/7.40.0"
 ::1 - - [04/Aug/2024:13:39:50 +0000] "GET /api/keys? HTTP/1.1" 200 1194072 "-" "PostmanRuntime/7.40.0"
 ::1 - - [04/Aug/2024:13:40:44 +0000] "GET /api/keys? HTTP/1.1" 200 1194072 "-" "PostmanRuntime/7.40.0"
+::1 - - [22/Aug/2024:16:14:29 +0000] "POST /api/auth/login HTTP/1.1" 202 247 "-" "PostmanRuntime/7.40.0"
+::1 - - [22/Aug/2024:16:14:51 +0000] "GET /api/dealers HTTP/1.1" 200 348 "-" "PostmanRuntime/7.40.0"

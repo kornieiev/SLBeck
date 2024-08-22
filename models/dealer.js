@@ -8,6 +8,11 @@ const dealerSchema = new Schema(
       // unique: true,
       // trim: true,
     },
+    dealerCategory: {
+      type: String,
+      required: true,
+      enum: ["repossesion", "dealer", "rental"],
+    },
   },
   {
     versionKey: false,
