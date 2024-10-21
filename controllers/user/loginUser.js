@@ -11,6 +11,9 @@ const loginUser = async (req, res, next) => {
 
   const user = await User.findOne({ email });
   if (!user) {
+    res.status(401).json({
+      message: "Unauthorized",
+    });
     throw HttpError(401, "Email, or Password invalid!");
   }
 
